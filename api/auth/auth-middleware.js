@@ -6,8 +6,9 @@
     "message": "You shall not pass!"
   }
 */
-function restricted() {
-
+function restricted(req, res, next) {
+  
+  next({status:401, message: "You shal not pass!"})
 }
 
 /*
@@ -47,3 +48,9 @@ function checkPasswordLength() {
 }
 
 // Don't forget to add these to the `exports` object so they can be required in other modules
+module.exports = {
+  restricted,
+  checkPasswordLength,
+  checkUsernameExists,
+  checkUsernameFree
+}
